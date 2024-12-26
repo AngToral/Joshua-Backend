@@ -9,13 +9,15 @@ const userSchema = new Schema({
     },
     password: {
         type: String,
-        required: true,
+        //required: true,
     },
     name: {
         type: String,
+        required: true,
     },
     lastname: {
         type: String,
+        required: true,
     },
     profilePic: {
         type: String,
@@ -27,6 +29,11 @@ const userSchema = new Schema({
     plan: {
         type: String,
         enum: ['Full', 'Cardio', 'Boxing', 'Nutrition', 'GYM'],
+        required: true,
+    },
+    status: {
+        type: String,
+        enum: ['active', 'inactive'],
     },
     removedAt: Date
 },

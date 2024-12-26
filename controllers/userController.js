@@ -1,9 +1,9 @@
 const { userModel } = require("../models/user.model")
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const transporter = require('../transporter');
 const fs = require("node:fs");
 const cloudinary = require("cloudinary");
+const transporter = require('../transporter');
 
 cloudinary.config({
     cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
@@ -36,7 +36,10 @@ const updateUser = async (req, res) => {
     try {
         if (req.body.password) {
             const hashedPassword = await bcrypt.hash(req.body.password, 10) //si cambio contraseña, la encripto
-            const data = await userModel.findByIdAndUpdate(req.params.id, { ...req.body, password: hashedPassword })
+            const data = await userModel.findByIdAndUpdate(req.params.id, {
+                ...req.body,
+                password: hashedPassword
+            })
             res.status(200).json(data)
         }
         if (req.file) {
@@ -64,7 +67,12 @@ const addUser = async (req, res) => {
         }
 
         const hashedPassword = await bcrypt.hash(req.body.password, 10) //encripto contraseña
-        const user = await userModel.create({ ...req.body, password: hashedPassword }) //creo usuario con contraseña encriptada
+        const user = await userModel.create({ //creo usuario con contraseña encriptada
+            ...req.body,
+            password: hashedPassword,
+            profileType: "user",
+            status: "inactive",
+        })
         if (user) { return res.status(201).json(user) }
     } catch (error) {
         res.status(400).json({ msg: "You missed some parameter", error: error.message })
@@ -153,7 +161,7 @@ const deleteUser = async (req, res) => {
 
 //         const forgottenEmail = {
 //             from: "angtoral.dev@gmail.com",
-//             to: "nanamendozago@gmail.com", //cambiar al de mariana
+//             to: "avtoral94@gmail.com", //cambiar al de Joshua
 //             subject: "New client contact! 🎉 ",
 //             html: sendingEmail,
 //         };
