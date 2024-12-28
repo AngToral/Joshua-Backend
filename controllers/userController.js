@@ -8,6 +8,7 @@ const forgotEmail = require("../emails/forgotEmail");
 const contactEmail = require("../emails/contactEmail");
 const changePassword = require("../emails/changePassword");
 const changeEmail = require("../emails/changeEmail");
+const newAccountEmail = require("../emails/newAccountEmail");
 
 cloudinary.config({
     cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
@@ -242,6 +243,35 @@ const sendChangeEmail = async (req, res) => {
     }
 }
 
+const sendNewAccountEmail = async (req, res) => {
+    const { email } = req.body
+    try {
+        const user = await userModel.findOne({ email: email })
+        const sendingEmail = newAccountEmail(user._id, user.name)
+        if (user) {
+            const newEmail = {
+                from: "angtoral.dev@gmail.com",
+                to: email,
+                subject: "Change your Email 🔑",
+                html: sendingEmail,
+            };
+            transporter.sendMail(newEmail, function (error, info) {
+                if (error) {
+                    console.log(error);
+                } else {
+                    console.log("Email sent: " + info.response);
+                }
+            });
+            console.log("Email sent")
+            res.status(200).json(user);
+        }
+        if (!user) res.status(404).json({ msg: "This email is not registered" })
+    }
+    catch {
+        res.status(500).json({ msg: "Error" })
+    }
+}
+
 module.exports = {
     getUsers,
     getUserId,
@@ -254,4 +284,5 @@ module.exports = {
     sendContactEmail,
     sendChangePassword,
     sendChangeEmail,
+    sendNewAccountEmail
 }
