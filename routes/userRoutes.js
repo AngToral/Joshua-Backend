@@ -1,5 +1,5 @@
 const express = require("express");
-const { getUsers, updateUser, login, addUser, deleteUser, getUserId, forgotPasswordEmail, sendChangePassword, sendChangeEmail, sendContactEmail, verifyToken, sendNewAccountEmail, } = require("../controllers/userController");
+const { getUsers, updateUser, login, addUser, deleteUser, getUserId, forgotPasswordEmail, sendChangePassword, sendChangeEmail, sendContactEmail, verifyToken, sendNewAccountEmail, sendSetPasswordEmail, } = require("../controllers/userController");
 const multer = require('multer');
 
 const userRouter = express.Router();
@@ -15,6 +15,7 @@ userRouter.post('/forgottenpassword', forgotPasswordEmail)
 userRouter.post('/changepassword', sendChangePassword) //verifyToken
 userRouter.post('/changeemail', sendChangeEmail) //verifyToken
 userRouter.post('/clientcontact', sendContactEmail)
+userRouter.post('/setpassword', sendSetPasswordEmail) //verifyToken
 userRouter.post('/newaccount', sendNewAccountEmail) //verifyToken
 
 module.exports = { userRouter }

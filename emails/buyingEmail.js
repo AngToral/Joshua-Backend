@@ -1,10 +1,10 @@
-module.exports = (userId, clientName) => `
+module.exports = (userId, clientName, clientLastname, clientEmail, plan) => `
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to Joshua community!</title>
+    <title>New sale</title>
     <style>
     body {
         font-family: Arial, sans-serif;
@@ -18,9 +18,9 @@ module.exports = (userId, clientName) => `
     .container {
         width: 90%;
         max-width: 530px;
-        height: 555px;
+        height: 690px;
         margin: 20px auto;
-        background-color: #e6eae9;
+        background-color: #545b66;
         border-radius: 10px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         position: relative;
@@ -28,8 +28,8 @@ module.exports = (userId, clientName) => `
 
     .container2 {
         max-width: 530px;
-        height: 240px;
-        background-color: #16375f;
+        height: 370px;
+        background-color: #ffffff;
         padding: 20px;
         border-radius: 10px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -41,13 +41,14 @@ module.exports = (userId, clientName) => `
 
     .footer {
         max-width: 530px;
-        background-color: #545b66;
+        background-color: #979ca2;
         color: #ffffff !important;
         position: absolute;
         bottom: 0px;
         left: 0px;
         right: 0px;
         border-radius: 10px;
+        margin: 10px;
         display: flex;
         justify-content: space-around;
     }
@@ -69,7 +70,6 @@ module.exports = (userId, clientName) => `
     .content {
         text-align: left;
         padding: 10px;
-        color: #ffffff;
     }
 
     .highlight-box {
@@ -94,7 +94,7 @@ module.exports = (userId, clientName) => `
         padding: 10px 20px;
         font-size: 16px;
         color: #ffffff !important;
-        background-color: #2f77c3;
+        background-color: #545b66;
         text-decoration: none;
         border-radius: 5px;
     }
@@ -109,16 +109,19 @@ module.exports = (userId, clientName) => `
 <body>
     <div class="container">
         <div class="container-image">
-            <img src="https://res.cloudinary.com/dqvce5mij/image/upload/v1735325544/Azul_syotal.png" class="image" />
+            <img src="https://res.cloudinary.com/dqvce5mij/image/upload/v1735325545/Gris_ygutmf.png" class="image" />
         </div>
         <div class="container2">
             <div class="content">
-                <h1>You are almost done, ${clientName}! 💪🏻</h1>
-                <p>To complete your new account and enjoy all the best sports content, set a password at the following
-                    link:</p>
-                <br />
-                <a class="btn" href="https://www.nanamendozago.com/setpassword/${userId}">Set password!</a>
-                <br />
+                <h1>Someone wants to buy your services, Joshua! 🔥</h1>
+                <p>Create a new account and charge for your services.</p>
+                <p>This is the client info:</p>
+                <p><strong>Name: </strong>${clientName}</p>
+                <p><strong>Lastname: </strong>${clientLastname}</p>
+                <p><strong>Email: </strong>${clientEmail}</p>
+                <p><strong>Plan: </strong>${plan}</p>
+                <br>
+                <a class="btn" href="https://www.nanamendozago.com/newaccount/${userId}">Create new account!</a>
             </div>
         </div>
         <div class="footer">

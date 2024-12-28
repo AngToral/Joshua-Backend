@@ -243,7 +243,7 @@ const sendChangeEmail = async (req, res) => {
     }
 }
 
-const sendNewAccountEmail = async (req, res) => {
+const sendSetPasswordEmail = async (req, res) => {
     const { email } = req.body
     try {
         const user = await userModel.findOne({ email: email })
@@ -252,7 +252,36 @@ const sendNewAccountEmail = async (req, res) => {
             const newEmail = {
                 from: "angtoral.dev@gmail.com",
                 to: email,
-                subject: "Change your Email 🔑",
+                subject: "Welcome to Joshua community! 💪🏻",
+                html: sendingEmail,
+            };
+            transporter.sendMail(newEmail, function (error, info) {
+                if (error) {
+                    console.log(error);
+                } else {
+                    console.log("Email sent: " + info.response);
+                }
+            });
+            console.log("Email sent")
+            res.status(200).json(user);
+        }
+        if (!user) res.status(404).json({ msg: "This email is not registered" })
+    }
+    catch {
+        res.status(500).json({ msg: "Error" })
+    }
+}
+
+const sendNewAccountEmail = async (req, res) => {
+    const { email } = req.body
+    try {
+        const user = await userModel.findOne({ email: email })
+        const sendingEmail = newAccountEmail(user._id, user.name, user.lastname, user.email, user.plan)
+        if (user) {
+            const newEmail = {
+                from: "angtoral.dev@gmail.com",
+                to: email,
+                subject: "New sale! 💪🏻",
                 html: sendingEmail,
             };
             transporter.sendMail(newEmail, function (error, info) {
@@ -284,5 +313,6 @@ module.exports = {
     sendContactEmail,
     sendChangePassword,
     sendChangeEmail,
-    sendNewAccountEmail
+    sendNewAccountEmail,
+    sendSetPasswordEmail
 }
