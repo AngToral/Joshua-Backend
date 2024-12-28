@@ -1,5 +1,5 @@
 const express = require("express");
-const { getUsers, updateUser, login, addUser, deleteUser, getUserId, } = require("../controllers/userController");
+const { getUsers, updateUser, login, addUser, deleteUser, getUserId, forgotPasswordEmail, sendChangePassword, sendChangeEmail, sendContactEmail, verifyToken, } = require("../controllers/userController");
 const multer = require('multer');
 
 const userRouter = express.Router();
@@ -11,9 +11,9 @@ userRouter.put('/:id?', ProfilePicUpload.single('ProfilePhoto'), updateUser)
 userRouter.post('/register', addUser)
 userRouter.post('/login', login)
 userRouter.delete('/:id?', deleteUser)
-// userRouter.post('/forgottenpassword', forgotPasswordEmail)
-// userRouter.post('/changepassword', verifyToken, sendChangePassword)
-// userRouter.post('/changeemail', verifyToken, sendChangeEmail)
-// userRouter.post('/clientcontact', sendContactEmail)
+userRouter.post('/forgottenpassword', forgotPasswordEmail)
+userRouter.post('/changepassword', sendChangePassword) //verifyToken
+userRouter.post('/changeemail', sendChangeEmail) //verifyToken
+userRouter.post('/clientcontact', sendContactEmail)
 
 module.exports = { userRouter }

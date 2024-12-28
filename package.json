@@ -4,7 +4,7 @@
   "description": "A website to sell personal training with a professional boxer",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "dev": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "AngToral",

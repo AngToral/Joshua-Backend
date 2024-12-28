@@ -4,6 +4,10 @@ const jwt = require('jsonwebtoken');
 const fs = require("node:fs");
 const cloudinary = require("cloudinary");
 const transporter = require('../transporter');
+const forgotEmail = require("../emails/forgotEmail");
+const contactEmail = require("../emails/contactEmail");
+const changePassword = require("../emails/changePassword");
+const changeEmail = require("../emails/changeEmail");
 
 cloudinary.config({
     cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
@@ -66,10 +70,10 @@ const addUser = async (req, res) => {
             res.status(500).json({ msg: "This email already exist" })
         }
 
-        const hashedPassword = await bcrypt.hash(req.body.password, 10) //encripto contraseña
+        //const hashedPassword = await bcrypt.hash(req.body.password, 10) //encripto contraseña
         const user = await userModel.create({ //creo usuario con contraseña encriptada
             ...req.body,
-            password: hashedPassword,
+            //password: hashedPassword,
             profileType: "user",
             status: "inactive",
         })
@@ -125,118 +129,118 @@ const deleteUser = async (req, res) => {
     }
 }
 
-// const forgotPasswordEmail = async (req, res) => {
-//     const { email } = req.body
-//     try {
-//         const user = await userModel.findOne({ email: email })
-//         const sendingEmail = forgotEmail(user._id)
-//         if (user) {
-//             const forgottenEmail = {
-//                 from: "angtoral.dev@gmail.com",
-//                 to: email,
-//                 subject: "Reset password 🔑",
-//                 html: sendingEmail,
-//             };
-//             transporter.sendMail(forgottenEmail, function (error, info) {
-//                 if (error) {
-//                     console.log(error);
-//                 } else {
-//                     console.log("Email sent: " + info.response);
-//                 }
-//             });
-//             console.log("Email sent")
-//             res.status(200).json(user);
-//         }
-//         if (!user) res.status(404).json({ msg: "This email is not registered" })
-//     }
-//     catch {
-//         res.status(500).json({ msg: "Error" })
-//     }
-// }
+const forgotPasswordEmail = async (req, res) => {
+    const { email } = req.body
+    try {
+        const user = await userModel.findOne({ email: email })
+        const sendingEmail = forgotEmail(user._id)
+        if (user) {
+            const forgottenEmail = {
+                from: "angtoral.dev@gmail.com",
+                to: email,
+                subject: "Reset password 🔑",
+                html: sendingEmail,
+            };
+            transporter.sendMail(forgottenEmail, function (error, info) {
+                if (error) {
+                    console.log(error);
+                } else {
+                    console.log("Email sent: " + info.response);
+                }
+            });
+            console.log("Email sent")
+            res.status(200).json(user);
+        }
+        if (!user) res.status(404).json({ msg: "This email is not registered" })
+    }
+    catch {
+        res.status(500).json({ msg: "Error" })
+    }
+}
 
-// const sendContactEmail = async (req, res) => {
-//     const { clientName, clientEmail, subject } = req.body
-//     try {
-//         const sendingEmail = contactEmail(clientName, clientEmail, subject)
+const sendContactEmail = async (req, res) => {
+    const { clientName, clientEmail, subject } = req.body
+    try {
+        const sendingEmail = contactEmail(clientName, clientEmail, subject)
 
-//         const forgottenEmail = {
-//             from: "angtoral.dev@gmail.com",
-//             to: "avtoral94@gmail.com", //cambiar al de Joshua
-//             subject: "New client contact! 🎉 ",
-//             html: sendingEmail,
-//         };
-//         transporter.sendMail(forgottenEmail, function (error, info) {
-//             if (error) {
-//                 console.log(error);
-//             } else {
-//                 console.log("Email sent: " + info.response);
-//             }
-//         });
-//         console.log("Email sent")
-//         res.status(200).json("Ok");
-//     }
-//     catch {
-//         res.status(500).json({ msg: "Error" })
-//     }
-// }
+        const forgottenEmail = {
+            from: "angtoral.dev@gmail.com",
+            to: "avtoral94@gmail.com", //cambiar al de Joshua
+            subject: "New client contact! 🎉 ",
+            html: sendingEmail,
+        };
+        transporter.sendMail(forgottenEmail, function (error, info) {
+            if (error) {
+                console.log(error);
+            } else {
+                console.log("Email sent: " + info.response);
+            }
+        });
+        console.log("Email sent")
+        res.status(200).json("Ok");
+    }
+    catch {
+        res.status(500).json({ msg: "Error" })
+    }
+}
 
-// const sendChangePassword = async (req, res) => {
-//     const { email } = req.body
-//     try {
-//         const user = await userModel.findOne({ email: email })
-//         const sendingEmail = changePassword(user._id)
-//         if (user) {
-//             const newEmail = {
-//                 from: "angtoral.dev@gmail.com",
-//                 to: email,
-//                 subject: "Change your password 🔑",
-//                 html: sendingEmail,
-//             };
-//             transporter.sendMail(newEmail, function (error, info) {
-//                 if (error) {
-//                     console.log(error);
-//                 } else {
-//                     console.log("Email sent: " + info.response);
-//                 }
-//             });
-//             console.log("Email sent")
-//             res.status(200).json(user);
-//         }
-//         if (!user) res.status(404).json({ msg: "This email is not registered" })
-//     }
-//     catch {
-//         res.status(500).json({ msg: "Error" })
-//     }
-// }
+const sendChangePassword = async (req, res) => {
+    const { email } = req.body
+    try {
+        const user = await userModel.findOne({ email: email })
+        const sendingEmail = changePassword(user._id)
+        if (user) {
+            const newEmail = {
+                from: "angtoral.dev@gmail.com",
+                to: email,
+                subject: "Change your password 🔑",
+                html: sendingEmail,
+            };
+            transporter.sendMail(newEmail, function (error, info) {
+                if (error) {
+                    console.log(error);
+                } else {
+                    console.log("Email sent: " + info.response);
+                }
+            });
+            console.log("Email sent")
+            res.status(200).json(user);
+        }
+        if (!user) res.status(404).json({ msg: "This email is not registered" })
+    }
+    catch {
+        res.status(500).json({ msg: "Error" })
+    }
+}
 
-// const sendChangeEmail = async (req, res) => {
-//     const { email } = req.body
-//     try {
-//         const user = await userModel.findOne({ email: email })
-//         const sendingEmail = changeEmail(user._id)
-//         if (user) {
-//             const newEmail = {
-//                 from: "angtoral.dev@gmail.com",
-//                 to: email,
-//                 subject: "Change your Email 🔑",
-//                 html: sendingEmail,
-//             };
-//             transporter.sendMail(newEmail, function (error, info) {
-//                 if (error) {
-//                     console.log(error);
-//                 } else {
-//                     console.log("Email sent: " + info.response);
-//                 }
-//             });
-//             console.log("Email sent")
-//             res.status(200).json(user);
-//         }
-//         if (!user) res.status(404).json({ msg: "This email is not registered" })
-//     }
-//     catch {
-//         res.status(500).json({ msg: "Error" })
-//     }
-// }
+const sendChangeEmail = async (req, res) => {
+    const { email } = req.body
+    try {
+        const user = await userModel.findOne({ email: email })
+        const sendingEmail = changeEmail(user._id)
+        if (user) {
+            const newEmail = {
+                from: "angtoral.dev@gmail.com",
+                to: email,
+                subject: "Change your Email 🔑",
+                html: sendingEmail,
+            };
+            transporter.sendMail(newEmail, function (error, info) {
+                if (error) {
+                    console.log(error);
+                } else {
+                    console.log("Email sent: " + info.response);
+                }
+            });
+            console.log("Email sent")
+            res.status(200).json(user);
+        }
+        if (!user) res.status(404).json({ msg: "This email is not registered" })
+    }
+    catch {
+        res.status(500).json({ msg: "Error" })
+    }
+}
 
 module.exports = {
     getUsers,
@@ -245,9 +249,9 @@ module.exports = {
     addUser,
     login,
     verifyToken,
-    deleteUser
-    // forgotPasswordEmail,
-    // sendContactEmail,
-    // sendChangePassword,
-    // sendChangeEmail,
+    deleteUser,
+    forgotPasswordEmail,
+    sendContactEmail,
+    sendChangePassword,
+    sendChangeEmail,
 }
