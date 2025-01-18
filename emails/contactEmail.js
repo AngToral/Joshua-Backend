@@ -13,12 +13,12 @@ module.exports = (subjectType, clientName, clientEmail, subject) => `
         margin: 0;
         padding: 0;
         text-align: center;
+        height: 100vh;
     }
 
     .container {
-        width: 90%;
         max-width: 530px;
-        height: 590px;
+        height: 610px;
         margin: 20px auto;
         background-color: #545b66;
         border-radius: 10px;
@@ -28,7 +28,7 @@ module.exports = (subjectType, clientName, clientEmail, subject) => `
 
     .container2 {
         max-width: 530px;
-        height: 270px;
+        height: 300px;
         background-color: #ffffff;
         padding: 20px;
         border-radius: 10px;
@@ -37,6 +37,8 @@ module.exports = (subjectType, clientName, clientEmail, subject) => `
         bottom: 0px;
         left: 0px;
         right: 0px;
+        border: 1px solid #545b66;
+        text-align: center;
     }
 
     .footer {
@@ -48,9 +50,18 @@ module.exports = (subjectType, clientName, clientEmail, subject) => `
         left: 0px;
         right: 0px;
         border-radius: 10px;
-        margin: 10px;
-        display: flex;
-        justify-content: space-around;
+        margin-top: 20px;
+        text-align: center;
+        height: 40px;
+    }
+
+    button {
+        border-radius: 10px;
+        padding: 10px;
+        background-color: transparent;
+        color: #ffffff !important;
+        border: 2px solid transparent;
+
     }
 
     .image {
@@ -100,8 +111,7 @@ module.exports = (subjectType, clientName, clientEmail, subject) => `
     }
 
     .container-image {
-        display: flex;
-        justify-content: center;
+        text-align: center;
         padding: 15px;
         align-items: center;
     }
@@ -114,17 +124,17 @@ module.exports = (subjectType, clientName, clientEmail, subject) => `
         </div>
         <div class="container2">
             <div class="content">
-                <h1>Someone needs more info, Joshua! 🔥</h1>
+                <h2>Someone needs more info, Joshua! 🔥</h2>
                 <h3>Client info:</h3>
                 <p><strong>Name: </strong>${clientName}</p>
                 <p><strong>Email: </strong>${clientEmail}</p>
                 <p><strong>Type of info: </strong>${subjectType}</p>
-                <p>${subject}</p>
+                <p><strong>Message: </strong>${subject}</p>
+                <div class="footer">
+                    <button href="https://www.instagram.com/">Instagram</button>
+                    <button href="https://www.instagram.com/">Website</button>
+                </div>
             </div>
-        </div>
-        <div class="footer">
-            <a href="https://www.instagram.com/">Instagram</a>
-            <a href="https://www.instagram.com/">Website</a>
         </div>
     </div>
 </body>
