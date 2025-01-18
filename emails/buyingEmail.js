@@ -132,7 +132,7 @@ module.exports = (clientName, clientLastname, clientEmail, subjectType) => `
                 <p><strong>Email: </strong>${clientEmail}</p>
                 <p><strong>Plan: </strong>${subjectType}</p>
                 <br>
-                <a class="btn" href="">Create new account!</a>
+                <a class="btn" href="http://localhost:5173/login">Create new account!</a>
             </div>
         </div>
         <div class="footer">

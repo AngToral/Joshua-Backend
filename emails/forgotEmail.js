@@ -127,7 +127,7 @@ module.exports = (userId) => `
                 <h1>Have you forgotten your password? 🔐</h1>
                 <p>Change it at the following link:</p>
                 <br />
-                <a class="btn" href="">New password!</a>
+                <a class="btn" href="http://localhost:5173/login">New password!</a>
                 <br />
             </div>
         </div>
