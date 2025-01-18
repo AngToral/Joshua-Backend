@@ -13,12 +13,12 @@ module.exports = (userId) => `
         margin: 0;
         padding: 0;
         text-align: center;
+        height: 100vh;
     }
 
     .container {
-        width: 90%;
         max-width: 530px;
-        height: 555px;
+        height: 610px;
         margin: 20px auto;
         background-color: #e6eae9;
         border-radius: 10px;
@@ -28,8 +28,8 @@ module.exports = (userId) => `
 
     .container2 {
         max-width: 530px;
-        height: 240px;
-        background-color: #16375f;
+        height: 300px;
+        background-color: #ffffff;
         padding: 20px;
         border-radius: 10px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -37,19 +37,31 @@ module.exports = (userId) => `
         bottom: 0px;
         left: 0px;
         right: 0px;
+        border: 1px solid #e6eae9;
+        text-align: center;
     }
 
     .footer {
         max-width: 530px;
-        background-color: #545b66;
+        background-color: #979ca2;
         color: #ffffff !important;
         position: absolute;
         bottom: 0px;
         left: 0px;
         right: 0px;
         border-radius: 10px;
-        display: flex;
-        justify-content: space-around;
+        margin-top: 20px;
+        text-align: center;
+        height: 40px;
+    }
+
+    button {
+        border-radius: 10px;
+        padding: 10px;
+        background-color: transparent;
+        color: #ffffff !important;
+        border: 2px solid transparent;
+
     }
 
     .image {
@@ -69,7 +81,6 @@ module.exports = (userId) => `
     .content {
         text-align: left;
         padding: 10px;
-        color: #ffffff;
     }
 
     .highlight-box {
@@ -94,15 +105,15 @@ module.exports = (userId) => `
         padding: 10px 20px;
         font-size: 16px;
         color: #ffffff !important;
-        background-color: #2f77c3;
+        background-color: #16375f;
         text-decoration: none;
         border-radius: 5px;
     }
 
     .container-image {
-        display: flex;
-        justify-content: center;
+        text-align: center;
         padding: 15px;
+        align-items: center;
     }
     </style>
 </head>
@@ -116,13 +127,13 @@ module.exports = (userId) => `
                 <h1>Have you forgotten your password? 🔐</h1>
                 <p>Change it at the following link:</p>
                 <br />
-                <a class="btn" href="https://www.nanamendozago.com/newpassword/${userId}">New password!</a>
+                <a class="btn" href="">New password!</a>
                 <br />
             </div>
         </div>
         <div class="footer">
-            <p>Instagram</p>
-            <p>Website</p>
+            <button href="https://www.instagram.com/">Instagram</button>
+            <button href="https://www.instagram.com/">Website</button>
         </div>
     </div>
 </body>
