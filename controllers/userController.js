@@ -188,6 +188,34 @@ const sendContactEmail = async (req, res) => {
     }
 }
 
+//Alguien quiere comprar un servicio
+const sendNewAccountEmail = async (req, res) => {
+    const { clientName, clientLastname, clientEmail, subjectType } = req.body
+    try {
+        const sendingEmail = buyingEmail(clientName, clientLastname, clientEmail, subjectType)
+
+        const newEmail = {
+            from: "angtoral.dev@gmail.com",
+            to: "avtoral94@gmail.com", //cambiar al de Joshua
+            subject: "New sale! 💪🏻",
+            html: sendingEmail,
+        };
+        transporter.sendMail(newEmail, function (error, info) {
+            if (error) {
+                console.log(error);
+            } else {
+                console.log("Email sent: " + info.response);
+            }
+        });
+        console.log("Email sent")
+        res.status(200).json("Ok");
+    }
+    catch {
+        res.status(500).json({ msg: "Error" })
+        console.log("Error")
+    }
+}
+
 //Quiere cambiar la contraseña dentro del login
 const sendChangePassword = async (req, res) => {
     const { email } = req.body
@@ -272,34 +300,6 @@ const sendSetPasswordEmail = async (req, res) => {
             res.status(200).json(user);
         }
         if (!user) res.status(404).json({ msg: "This email is not registered" })
-    }
-    catch {
-        res.status(500).json({ msg: "Error" })
-    }
-}
-
-//Alguien quiere comprar un servicio
-const sendNewAccountEmail = async (req, res) => {
-    const { subjectType, clientName, clientEmail, subject } = req.body
-    try {
-        const sendingEmail = buyingEmail(subjectType, clientName, clientEmail, subject)
-        if (user) {
-            const newEmail = {
-                from: "angtoral.dev@gmail.com",
-                to: email,
-                subject: "New sale! 💪🏻",
-                html: sendingEmail,
-            };
-            transporter.sendMail(newEmail, function (error, info) {
-                if (error) {
-                    console.log(error);
-                } else {
-                    console.log("Email sent: " + info.response);
-                }
-            });
-            console.log("Email sent")
-            res.status(200).json(user);
-        }
     }
     catch {
         res.status(500).json({ msg: "Error" })

@@ -16,6 +16,6 @@ userRouter.post('/changepassword', sendChangePassword) //verifyToken
 userRouter.post('/changeemail', sendChangeEmail) //verifyToken
 userRouter.post('/clientcontact', sendContactEmail)
 userRouter.post('/setpassword', sendSetPasswordEmail) //verifyToken
-userRouter.post('/newaccount', sendNewAccountEmail) //verifyToken
+userRouter.post('/newaccount', sendNewAccountEmail)
 
 module.exports = { userRouter }

@@ -1,4 +1,4 @@
-module.exports = (userId, clientName, clientLastname, clientEmail, subjectType) => `
+module.exports = (clientName, clientLastname, clientEmail, subjectType) => `
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -13,12 +13,12 @@ module.exports = (userId, clientName, clientLastname, clientEmail, subjectType) 
         margin: 0;
         padding: 0;
         text-align: center;
+        height: 100vh;
     }
 
     .container {
-        width: 90%;
         max-width: 530px;
-        height: 690px;
+        height: 640px;
         margin: 20px auto;
         background-color: #545b66;
         border-radius: 10px;
@@ -28,7 +28,7 @@ module.exports = (userId, clientName, clientLastname, clientEmail, subjectType) 
 
     .container2 {
         max-width: 530px;
-        height: 370px;
+        height: 330px;
         background-color: #ffffff;
         padding: 20px;
         border-radius: 10px;
@@ -37,6 +37,8 @@ module.exports = (userId, clientName, clientLastname, clientEmail, subjectType) 
         bottom: 0px;
         left: 0px;
         right: 0px;
+        border: 1px solid #545b66;
+        text-align: center;
     }
 
     .footer {
@@ -48,9 +50,18 @@ module.exports = (userId, clientName, clientLastname, clientEmail, subjectType) 
         left: 0px;
         right: 0px;
         border-radius: 10px;
-        margin: 10px;
-        display: flex;
-        justify-content: space-around;
+        margin-top: 20px;
+        text-align: center;
+        height: 40px;
+    }
+
+    button {
+        border-radius: 10px;
+        padding: 10px;
+        background-color: transparent;
+        color: #ffffff !important;
+        border: 2px solid transparent;
+
     }
 
     .image {
@@ -100,9 +111,9 @@ module.exports = (userId, clientName, clientLastname, clientEmail, subjectType) 
     }
 
     .container-image {
-        display: flex;
-        justify-content: center;
+        text-align: center;
         padding: 15px;
+        align-items: center;
     }
     </style>
 </head>
@@ -113,7 +124,7 @@ module.exports = (userId, clientName, clientLastname, clientEmail, subjectType) 
         </div>
         <div class="container2">
             <div class="content">
-                <h1>Someone wants to buy your services, Joshua! 🔥</h1>
+                <h2>Someone wants to buy your services, Joshua! 🔥</h2>
                 <p>Create a new account and charge for your services.</p>
                 <p>This is the client info:</p>
                 <p><strong>Name: </strong>${clientName}</p>
@@ -121,12 +132,12 @@ module.exports = (userId, clientName, clientLastname, clientEmail, subjectType) 
                 <p><strong>Email: </strong>${clientEmail}</p>
                 <p><strong>Plan: </strong>${subjectType}</p>
                 <br>
-                <a class="btn" href="https://www.nanamendozago.com/newaccount/${userId}">Create new account!</a>
+                <a class="btn" href="">Create new account!</a>
             </div>
         </div>
         <div class="footer">
-            <p>Instagram</p>
-            <p>Website</p>
+            <button href="https://www.instagram.com/">Instagram</button>
+            <button href="https://www.instagram.com/">Website</button>
         </div>
     </div>
 </body>
