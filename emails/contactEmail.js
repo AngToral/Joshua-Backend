@@ -1,4 +1,4 @@
-module.exports = (clientName, clientEmail, subject) => `
+module.exports = (subjectType, clientName, clientEmail, subject) => `
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -103,6 +103,7 @@ module.exports = (clientName, clientEmail, subject) => `
         display: flex;
         justify-content: center;
         padding: 15px;
+        align-items: center;
     }
     </style>
 </head>
@@ -117,12 +118,13 @@ module.exports = (clientName, clientEmail, subject) => `
                 <h3>Client info:</h3>
                 <p><strong>Name: </strong>${clientName}</p>
                 <p><strong>Email: </strong>${clientEmail}</p>
-                <p><strong>Subject: </strong>${subject}</p>
+                <p><strong>Type of info: </strong>${subjectType}</p>
+                <p>${subject}</p>
             </div>
         </div>
         <div class="footer">
-            <p>Instagram</p>
-            <p>Website</p>
+            <a href="https://www.instagram.com/">Instagram</a>
+            <a href="https://www.instagram.com/">Website</a>
         </div>
     </div>
 </body>

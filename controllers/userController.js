@@ -160,17 +160,17 @@ const forgotPasswordEmail = async (req, res) => {
 }
 
 const sendContactEmail = async (req, res) => {
-    const { clientName, clientEmail, subject } = req.body
+    const { subjectType, clientName, clientEmail, subject } = req.body
     try {
-        const sendingEmail = contactEmail(clientName, clientEmail, subject)
+        const sendingEmail = contactEmail(subjectType, clientName, clientEmail, subject)
 
-        const forgottenEmail = {
+        const newEmail = {
             from: "angtoral.dev@gmail.com",
             to: "avtoral94@gmail.com", //cambiar al de Joshua
             subject: "New client contact! 🎉 ",
             html: sendingEmail,
         };
-        transporter.sendMail(forgottenEmail, function (error, info) {
+        transporter.sendMail(newEmail, function (error, info) {
             if (error) {
                 console.log(error);
             } else {
