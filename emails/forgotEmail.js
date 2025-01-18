@@ -124,7 +124,7 @@ module.exports = (userId) => `
         </div>
         <div class="container2">
             <div class="content">
-                <h1>Have you forgotten your password? 🔐</h1>
+                <h2>Have you forgotten your password? 🔐</h2>
                 <p>Change it at the following link:</p>
                 <br />
                 <a class="btn" href="http://localhost:5173/login">New password!</a>
