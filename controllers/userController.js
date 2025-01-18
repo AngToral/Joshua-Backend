@@ -9,6 +9,7 @@ const contactEmail = require("../emails/contactEmail");
 const changePassword = require("../emails/changePassword");
 const changeEmail = require("../emails/changeEmail");
 const newAccountEmail = require("../emails/newAccountEmail");
+const buyingEmail = require("../emails/buyingEmail");
 
 cloudinary.config({
     cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
@@ -130,6 +131,7 @@ const deleteUser = async (req, res) => {
     }
 }
 
+// Si se olvida la contraseña fuera del login
 const forgotPasswordEmail = async (req, res) => {
     const { email } = req.body
     try {
@@ -159,6 +161,7 @@ const forgotPasswordEmail = async (req, res) => {
     }
 }
 
+//Alguien quiere contactar con Joshua
 const sendContactEmail = async (req, res) => {
     const { subjectType, clientName, clientEmail, subject } = req.body
     try {
@@ -185,6 +188,7 @@ const sendContactEmail = async (req, res) => {
     }
 }
 
+//Quiere cambiar la contraseña dentro del login
 const sendChangePassword = async (req, res) => {
     const { email } = req.body
     try {
@@ -214,6 +218,7 @@ const sendChangePassword = async (req, res) => {
     }
 }
 
+//Quiere cambiar el email dentro del login
 const sendChangeEmail = async (req, res) => {
     const { email } = req.body
     try {
@@ -243,6 +248,7 @@ const sendChangeEmail = async (req, res) => {
     }
 }
 
+//El cliente debe crear contraseña de su nueva cuenta
 const sendSetPasswordEmail = async (req, res) => {
     const { email } = req.body
     try {
@@ -272,11 +278,11 @@ const sendSetPasswordEmail = async (req, res) => {
     }
 }
 
+//Alguien quiere comprar un servicio
 const sendNewAccountEmail = async (req, res) => {
-    const { email } = req.body
+    const { subjectType, clientName, clientEmail, subject } = req.body
     try {
-        const user = await userModel.findOne({ email: email })
-        const sendingEmail = newAccountEmail(user._id, user.name, user.lastname, user.email, user.plan)
+        const sendingEmail = buyingEmail(subjectType, clientName, clientEmail, subject)
         if (user) {
             const newEmail = {
                 from: "angtoral.dev@gmail.com",
@@ -294,7 +300,6 @@ const sendNewAccountEmail = async (req, res) => {
             console.log("Email sent")
             res.status(200).json(user);
         }
-        if (!user) res.status(404).json({ msg: "This email is not registered" })
     }
     catch {
         res.status(500).json({ msg: "Error" })

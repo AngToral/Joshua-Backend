@@ -1,4 +1,4 @@
-module.exports = (userId, clientName, clientLastname, clientEmail, plan) => `
+module.exports = (userId, clientName, clientLastname, clientEmail, subjectType) => `
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -119,7 +119,7 @@ module.exports = (userId, clientName, clientLastname, clientEmail, plan) => `
                 <p><strong>Name: </strong>${clientName}</p>
                 <p><strong>Lastname: </strong>${clientLastname}</p>
                 <p><strong>Email: </strong>${clientEmail}</p>
-                <p><strong>Plan: </strong>${plan}</p>
+                <p><strong>Plan: </strong>${subjectType}</p>
                 <br>
                 <a class="btn" href="https://www.nanamendozago.com/newaccount/${userId}">Create new account!</a>
             </div>
