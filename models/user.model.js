@@ -9,7 +9,7 @@ const userSchema = new Schema({
     },
     password: {
         type: String,
-        //required: true,
+        required: true,
     },
     name: {
         type: String,
@@ -28,7 +28,7 @@ const userSchema = new Schema({
     },
     plan: {
         type: String,
-        enum: ['Full', 'Cardio', 'Boxing', 'Nutrition', 'GYM'],
+        enum: ['Basic', 'Plus', 'Pro', 'Personal'],
         required: true,
     },
     status: {

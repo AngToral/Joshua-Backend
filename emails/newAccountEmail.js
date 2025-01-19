@@ -117,7 +117,7 @@ module.exports = (userId, clientName) => `
                 <p>To complete your new account and enjoy all the best sports content, set a password at the following
                     link:</p>
                 <br />
-                <a class="btn" href="https://www.nanamendozago.com/setpassword/${userId}">Set password!</a>
+                <a class="btn" href="http://localhost:5173/setnewpassword/${userId}">Set password!</a>
                 <br />
             </div>
         </div>

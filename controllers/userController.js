@@ -72,10 +72,10 @@ const addUser = async (req, res) => {
             res.status(500).json({ msg: "This email already exist" })
         }
 
-        //const hashedPassword = await bcrypt.hash(req.body.password, 10) //encripto contraseña
+        const hashedPassword = await bcrypt.hash(req.body.password, 10) //encripto contraseña
         const user = await userModel.create({ //creo usuario con contraseña encriptada
             ...req.body,
-            //password: hashedPassword,
+            password: hashedPassword,
             profileType: "user",
             status: "inactive",
         })
