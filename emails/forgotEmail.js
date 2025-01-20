@@ -38,7 +38,7 @@ module.exports = (userId) => `
 
     button {
         border-radius: 10px;
-        padding: 10px;
+        padding: 5px;
         background-color: transparent;
         border: 2px solid transparent;
         color: #545b66;
@@ -60,7 +60,7 @@ module.exports = (userId) => `
 
     .btn {
         margin-bottom: 15px;
-        padding: 10px 20px;
+        padding: 5px;
         font-size: 16px;
         background-color: white;
         border-radius: 5px;

@@ -33,9 +33,8 @@ module.exports = (clientName, clientLastname, clientEmail, subjectType) => `
         border: 1px solid #545b66;
         border-radius: 10px;
         background-color: #545b66;
-        display: flex;
-        align-items: center;
         justify-content: center;
+        text-align: center;
     }
 
     button {
@@ -67,6 +66,7 @@ module.exports = (clientName, clientLastname, clientEmail, subjectType) => `
         background-color: #979ca2;
         border-radius: 5px;
         width: 150px;
+        text-align: center;
     }
 
     .container-image {
@@ -76,9 +76,7 @@ module.exports = (clientName, clientLastname, clientEmail, subjectType) => `
     }
 
     .btn-div {
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        margin: 20px;
     }
     </style>
 </head>
