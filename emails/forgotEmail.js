@@ -7,9 +7,10 @@ module.exports = (userId) => `
     <title>Reset password</title>
     <style>
     body {
-        max-width: 530px;
+        width: 100vw;
         margin: 0;
         padding: 0;
+        background-color: white;
     }
 
     .container-grey {
@@ -17,7 +18,7 @@ module.exports = (userId) => `
         background-color: #e6eae9;
         margin: 10px;
         border-radius: 20px;
-        max-width: 530px;
+        max-width: 470px;
     }
 
     .container-blue {
@@ -25,7 +26,7 @@ module.exports = (userId) => `
         border-radius: 20px;
         background-color: #16375f;
         padding: 20px;
-        max-width: 530px;
+        max-width: 470px;
     }
 
     .footer {

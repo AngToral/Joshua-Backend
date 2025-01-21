@@ -7,9 +7,10 @@ module.exports = (clientName, clientLastname, clientEmail, subjectType) => `
     <title>New sale</title>
     <style>
     body {
-        max-width: 530px;
+        width: 100vw;
         margin: 0;
         padding: 0;
+        background-color: white;
     }
 
     .container-grey {
@@ -17,7 +18,7 @@ module.exports = (clientName, clientLastname, clientEmail, subjectType) => `
         background-color: #545b66;
         margin: 10px;
         border-radius: 20px;
-        max-width: 530px;
+        max-width: 470px;
     }
 
     .container-white {
@@ -25,7 +26,7 @@ module.exports = (clientName, clientLastname, clientEmail, subjectType) => `
         border-radius: 20px;
         background-color: #ffffff;
         padding: 20px;
-        max-width: 530px;
+        max-width: 470px;
     }
 
     .footer {
