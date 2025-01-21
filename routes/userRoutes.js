@@ -7,7 +7,7 @@ const ProfilePicUpload = multer({ dest: './images-profile' })
 
 userRouter.get('/', getUsers)
 userRouter.get('/:id?', getUserId)
-userRouter.put('/:id?', ProfilePicUpload.single('ProfilePhoto'), updateUser)
+userRouter.put('/:id?', updateUser)
 userRouter.post('/register', addUser)
 userRouter.post('/login', login)
 userRouter.delete('/:id?', deleteUser)
@@ -19,3 +19,5 @@ userRouter.post('/setpassword', sendSetPasswordEmail) //verifyToken
 userRouter.post('/newaccount', sendNewAccountEmail)
 
 module.exports = { userRouter }
+
+//ProfilePicUpload.single('ProfilePhoto'), 
