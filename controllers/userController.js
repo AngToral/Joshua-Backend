@@ -136,8 +136,9 @@ const forgotPasswordEmail = async (req, res) => {
     const { email } = req.body
     try {
         const user = await userModel.findOne({ email: email })
-        const sendingEmail = forgotEmail(user._id)
+        if (!user) res.status(404).json({ msg: "This email is not registered" })
         if (user) {
+            const sendingEmail = forgotEmail(user._id)
             const forgottenEmail = {
                 from: "angtoral.dev@gmail.com",
                 to: email,
@@ -154,7 +155,6 @@ const forgotPasswordEmail = async (req, res) => {
             console.log("Email sent")
             res.status(200).json(user);
         }
-        if (!user) res.status(404).json({ msg: "This email is not registered" })
     }
     catch {
         res.status(500).json({ msg: "Error" })
