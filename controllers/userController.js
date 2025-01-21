@@ -44,7 +44,8 @@ const updateUser = async (req, res) => {
             const hashedPassword = await bcrypt.hash(req.body.password, 10) //si cambio contraseña, la encripto
             const data = await userModel.findByIdAndUpdate(req.params.id, {
                 ...req.body,
-                password: hashedPassword
+                password: hashedPassword,
+                status: "active",
             })
             res.status(200).json(data)
         }
@@ -78,6 +79,7 @@ const addUser = async (req, res) => {
             password: hashedPassword,
             profileType: "user",
             status: "inactive",
+            profilePic: "https://res.cloudinary.com/dqvce5mij/image/upload/v1737487077/cute-cat-studio_yq3lll.jpg"
         })
         if (user) { return res.status(201).json(user) }
     } catch (error) {
