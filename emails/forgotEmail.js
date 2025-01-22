@@ -7,16 +7,19 @@ module.exports = (userId) => `
     <title>Reset password</title>
     <style>
     body {
-        width: 100vw;
-        margin: 0;
-        padding: 0;
+        font-family: Arial, sans-serif;
         background-color: white;
+        margin: 0 autop;
+        padding: 20px;
+        text-align: center;
+        width: 100%;
     }
 
     .container-grey {
+        width: 90%;
         border: 1px solid #16375f;
         background-color: #e6eae9;
-        margin: 10px;
+        margin: 10px auto;
         border-radius: 20px;
         max-width: 470px;
     }
@@ -43,6 +46,7 @@ module.exports = (userId) => `
         background-color: transparent;
         border: 2px solid transparent;
         color: #545b66;
+        display: block;
     }
 
     .image {
