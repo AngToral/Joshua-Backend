@@ -141,7 +141,7 @@ const forgotPasswordEmail = async (req, res) => {
         if (user) {
             const sendingEmail = forgotEmail(user._id)
             const forgottenEmail = {
-                from: "angtoral.dev@gmail.com",
+                from: "joshuadestigtertraining@gmail.com",
                 to: email,
                 subject: "Reset password 🔑",
                 html: sendingEmail,
@@ -169,7 +169,7 @@ const sendContactEmail = async (req, res) => {
         const sendingEmail = contactEmail(subjectType, clientName, clientEmail, subject)
 
         const newEmail = {
-            from: "angtoral.dev@gmail.com",
+            from: "joshuadestigtertraining@gmail.com",
             to: "avtoral94@gmail.com", //cambiar al de Joshua
             subject: "New client contact! 🎉 ",
             html: sendingEmail,
@@ -196,7 +196,7 @@ const sendNewAccountEmail = async (req, res) => {
         const sendingEmail = buyingEmail(clientName, clientLastname, clientEmail, subjectType)
 
         const newEmail = {
-            from: "angtoral.dev@gmail.com",
+            from: "joshuadestigtertraining@gmail.com",
             to: "avtoral94@gmail.com", //cambiar al de Joshua
             subject: "New sale! 💪🏻",
             html: sendingEmail,
@@ -225,7 +225,7 @@ const sendChangePassword = async (req, res) => {
         const sendingEmail = changePassword(user._id)
         if (user) {
             const newEmail = {
-                from: "angtoral.dev@gmail.com",
+                from: "joshuadestigtertraining@gmail.com",
                 to: email,
                 subject: "Change your password 🔑",
                 html: sendingEmail,
@@ -255,7 +255,7 @@ const sendChangeEmail = async (req, res) => {
         const sendingEmail = changeEmail(user._id)
         if (user) {
             const newEmail = {
-                from: "angtoral.dev@gmail.com",
+                from: "joshuadestigtertraining@gmail.com",
                 to: email,
                 subject: "Change your Email 🔑",
                 html: sendingEmail,
@@ -285,7 +285,7 @@ const sendSetPasswordEmail = async (req, res) => {
         const sendingEmail = newAccountEmail(user._id, user.name)
         if (user) {
             const newEmail = {
-                from: "angtoral.dev@gmail.com",
+                from: "joshuadestigtertraining@gmail.com",
                 to: email,
                 subject: "Welcome to Joshua community! 💪🏻",
                 html: sendingEmail,
