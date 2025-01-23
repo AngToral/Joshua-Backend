@@ -53,15 +53,19 @@ module.exports = (subjectType, clientName, clientEmail, subject) => `
         margin-top: 20px;
         text-align: center;
         height: 40px;
+        align-items: center;
+        padding-top: 10px;
     }
 
-    button {
+    a {
         border-radius: 10px;
         padding: 10px;
         background-color: transparent;
-        color: #ffffff !important;
         border: 2px solid transparent;
-
+        color: #ffffff !important;
+        cursor: pointer;
+        text-decoration: none;
+        text-align: center;
     }
 
     .image {
@@ -131,8 +135,8 @@ module.exports = (subjectType, clientName, clientEmail, subject) => `
                 <p><strong>Type of info: </strong>${subjectType}</p>
                 <p><strong>Message: </strong>${subject}</p>
                 <div class="footer">
-                    <button href="https://www.instagram.com/">Instagram</button>
-                    <button href="https://www.instagram.com/">Website</button>
+                    <a href="https://www.instagram.com/">Instagram</a>
+                    <a href="https://www.instagram.com/">Website</a>
                 </div>
             </div>
         </div>

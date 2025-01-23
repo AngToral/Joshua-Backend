@@ -38,6 +38,7 @@ module.exports = (userId) => `
         text-align: center;
         height: 25px;
         padding: 5px;
+        align-items: center;
     }
 
     a {
