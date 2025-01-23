@@ -84,6 +84,11 @@ module.exports = (userId) => `
     .content {
         color: #e6eae9;
     }
+
+    .note {
+        font-style: italic;
+        text-align: end;
+    }
     </style>
 </head>
 
@@ -101,6 +106,7 @@ module.exports = (userId) => `
                         <button href="http://localhost:5173/login">New Password!</button>
                     </div>
                 </div>
+                <p class="note">Do not response to this email</p>
                 <div class="footer">
                     <button href="https://www.instagram.com/">Instagram</button>
                     <button href="https://www.instagram.com/">Website</button>

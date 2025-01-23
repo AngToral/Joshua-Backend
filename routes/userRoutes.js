@@ -1,5 +1,5 @@
 const express = require("express");
-const { getUsers, updateUser, login, addUser, deleteUser, getUserId, forgotPasswordEmail, sendChangePassword, sendChangeEmail, sendContactEmail, verifyToken, sendNewAccountEmail, sendSetPasswordEmail, } = require("../controllers/userController");
+const { getUsers, updateUser, login, addUser, deleteUser, getUserId, forgotPasswordEmail, sendChangePassword, sendChangeEmail, sendContactEmail, verifyToken, sendNewAccountEmail, sendSetPasswordEmail, updatePhoto, } = require("../controllers/userController");
 const multer = require('multer');
 
 const userRouter = express.Router();
@@ -8,6 +8,7 @@ const ProfilePicUpload = multer({ dest: './images-profile' })
 userRouter.get('/', getUsers)
 userRouter.get('/:id?', getUserId)
 userRouter.put('/:id?', updateUser)
+userRouter.put('/update/:id?', ProfilePicUpload.single('profilePic'), updatePhoto)
 userRouter.post('/register', addUser)
 userRouter.post('/login', login)
 userRouter.delete('/:id?', deleteUser)
@@ -19,5 +20,3 @@ userRouter.post('/setpassword', sendSetPasswordEmail) //verifyToken
 userRouter.post('/newaccount', sendNewAccountEmail)
 
 module.exports = { userRouter }
-
-//ProfilePicUpload.single('ProfilePhoto'), 

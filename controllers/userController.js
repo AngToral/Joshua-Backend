@@ -48,17 +48,27 @@ const updateUser = async (req, res) => {
             })
             res.status(200).json(data)
         }
-        // if (req.file) {
-        //     const result = await cloudinary.uploader.upload(req.file.path)
-        //     fs.unlinkSync(req.file.path);
-        //     req.body.ProfilePhoto = result.url;
-        //     res.status(201).json({ msg: "Photo created", id: photo._id })
-        // }
         else {
             const user = await userModel.findByIdAndUpdate(req.params.id, { ...req.body })
             if (user) { return res.status(200).json(user) }
             else return res.status(404).json({ msg: "User not found" })
         }
+    } catch (error) {
+        res.status(400).json({ msg: "You missed some parameter", error: error.message })
+    }
+}
+
+const updatePhoto = async (req, res) => {
+    try {
+        const updateData = req.body;
+        if (req.file) {
+            const result = await cloudinary.uploader.upload(req.file.path);
+            fs.unlinkSync(req.file.path);
+            updateData.profilePic = result.url;
+        }
+        const photo = await userModel.findByIdAndUpdate(req.params.id, updateData)
+        if (photo) { return res.status(200).json({ msg: "Photo updated" }) }
+        else return res.status(404).json({ msg: "Photo not found" })
     } catch (error) {
         res.status(400).json({ msg: "You missed some parameter", error: error.message })
     }
@@ -320,5 +330,6 @@ module.exports = {
     sendChangePassword,
     sendChangeEmail,
     sendNewAccountEmail,
-    sendSetPasswordEmail
+    sendSetPasswordEmail,
+    updatePhoto
 }
