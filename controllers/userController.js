@@ -43,6 +43,7 @@ const updateUser = async (req, res) => {
         if (req.body.password) {
             const hashedPassword = await bcrypt.hash(req.body.password, 10) //si cambio contraseña, la encripto
             const data = await userModel.findByIdAndUpdate(req.params.id, {
+                ...req.body,
                 password: hashedPassword,
                 status: "active",
             })

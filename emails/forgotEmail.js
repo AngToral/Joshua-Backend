@@ -103,7 +103,7 @@ module.exports = (userId) => `
                 <p>Change it at the following link:</p>
                 <div class="btn-div">
                     <div class="btn">
-                        <button href="http://localhost:5173/login">New Password!</button>
+                        <button href="http://localhost:5173/setnewpassword/${userId}">New Password!</button>
                     </div>
                 </div>
                 <p class="note">Do not response to this email</p>
