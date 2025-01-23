@@ -8,7 +8,6 @@ module.exports = (userId) => `
     <style>
     body {
         font-family: Arial, sans-serif;
-        background-color: white;
         margin: 0 autop;
         padding: 20px;
         text-align: center;
@@ -46,7 +45,6 @@ module.exports = (userId) => `
         background-color: transparent;
         border: 2px solid transparent;
         color: #545b66;
-        display: block;
     }
 
     .image {

@@ -7,13 +7,15 @@ module.exports = (clientName, clientLastname, clientEmail, subjectType) => `
     <title>New sale</title>
     <style>
     body {
-        width: 100vw;
-        margin: 0;
-        padding: 0;
-        background-color: white;
+        font-family: Arial, sans-serif;
+        margin: 0 autop;
+        padding: 20px;
+        text-align: center;
+        width: 100%;
     }
 
     .container-grey {
+        width: 90%;
         border: 1px solid #545b66;
         background-color: #545b66;
         margin: 10px;
