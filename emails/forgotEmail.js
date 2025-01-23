@@ -35,16 +35,20 @@ module.exports = (userId) => `
         border: 1px solid #545b66;
         border-radius: 10px;
         background-color: #e6eae9;
-        justify-content: center;
         text-align: center;
+        height: 25px;
+        padding: 5px;
     }
 
-    button {
+    a {
         border-radius: 10px;
-        padding: 5px;
+        margin: 10px;
         background-color: transparent;
         border: 2px solid transparent;
-        color: #545b66;
+        color: #545b66 !important;
+        cursor: pointer;
+        text-decoration: none;
+        text-align: center;
     }
 
     .image {
@@ -67,8 +71,9 @@ module.exports = (userId) => `
         font-size: 16px;
         background-color: white;
         border-radius: 5px;
-        width: 120px;
+        width: 150px;
         text-align: center;
+        height: 25px;
     }
 
     .container-image {
@@ -87,7 +92,7 @@ module.exports = (userId) => `
 
     .note {
         font-style: italic;
-        text-align: end;
+        text-align: center;
     }
     </style>
 </head>
@@ -103,13 +108,13 @@ module.exports = (userId) => `
                 <p>Change it at the following link:</p>
                 <div class="btn-div">
                     <div class="btn">
-                        <button href="http://localhost:5173/setnewpassword/${userId}">New Password!</button>
+                        <a href="http://localhost:5173/setnewpassword/${userId}">New Password!</a>
                     </div>
                 </div>
-                <p class="note">Do not response to this email</p>
+                <p class="note">**Do not response to this email**</p>
                 <div class="footer">
-                    <button href="https://www.instagram.com/">Instagram</button>
-                    <button href="https://www.instagram.com/">Website</button>
+                    <a href="https://www.instagram.com/">Instagram</a>
+                    <a href="https://www.instagram.com/">Website</a>
                 </div>
             </div>
         </div>
