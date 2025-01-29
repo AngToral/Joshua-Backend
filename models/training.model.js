@@ -16,7 +16,7 @@ const trainingSchema = new Schema({
     },
     category: {
         type: String,
-        enum: ['Cardio', 'Boxing', 'Nutrition', 'GYM'],
+        enum: ['Cardio', 'Boxing', 'GYM', 'Nutrition', 'Injuries', 'Stretching'],
     },
     feedback: {
         type: String,
