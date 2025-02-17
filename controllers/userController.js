@@ -80,7 +80,7 @@ const addUser = async (req, res) => {
     try {
         const userChecked = await userModel.findOne({ email: email }) //busco email en BD
         if (userChecked) {
-            res.status(500).json({ msg: "This email already exist" })
+            return res.status(500).json({ msg: "This email already exist" })
         }
 
         const hashedPassword = await bcrypt.hash(req.body.password, 10) //encripto contraseña
@@ -91,7 +91,25 @@ const addUser = async (req, res) => {
             status: "inactive",
             profilePic: "https://res.cloudinary.com/dqvce5mij/image/upload/v1737487077/cute-cat-studio_yq3lll.jpg"
         })
-        if (user) { return res.status(201).json(user) }
+        //El cliente debe crear contraseña de su nueva cuenta
+        if (user) {
+            const sendingEmail = newAccountEmail(user._id, user.name)
+            const newEmail = {
+                from: "joshuadestigtertraining@gmail.com",
+                to: email,
+                subject: "Welcome to Joshua community! 💪🏻",
+                html: sendingEmail,
+            };
+            transporter.sendMail(newEmail, function (error, info) {
+                if (error) {
+                    console.log(error);
+                } else {
+                    console.log("Email sent: " + info.response);
+                }
+            });
+            console.log("Email sent")
+            res.status(200).json(user);
+        }
     } catch (error) {
         res.status(400).json({ msg: "You missed some parameter", error: error.message })
     }
@@ -173,7 +191,7 @@ const forgotPasswordEmail = async (req, res) => {
     }
 }
 
-//Alguien quiere contactar con Joshua
+// envío de correo cuando alguien rellena el form de contacto en home
 const sendContactEmail = async (req, res) => {
     const { subjectType, clientName, clientEmail, subject } = req.body
     try {
@@ -200,7 +218,7 @@ const sendContactEmail = async (req, res) => {
     }
 }
 
-//Alguien quiere comprar un servicio
+//envío de correo cuando alguien rellena el form de sign in en home
 const sendNewAccountEmail = async (req, res) => {
     const { clientName, clientLastname, clientEmail, subjectType } = req.body
     try {
@@ -288,36 +306,6 @@ const sendChangeEmail = async (req, res) => {
     }
 }
 
-//El cliente debe crear contraseña de su nueva cuenta
-const sendSetPasswordEmail = async (req, res) => {
-    const { email } = req.body
-    try {
-        const user = await userModel.findOne({ email: email })
-        const sendingEmail = newAccountEmail(user._id, user.name)
-        if (user) {
-            const newEmail = {
-                from: "joshuadestigtertraining@gmail.com",
-                to: email,
-                subject: "Welcome to Joshua community! 💪🏻",
-                html: sendingEmail,
-            };
-            transporter.sendMail(newEmail, function (error, info) {
-                if (error) {
-                    console.log(error);
-                } else {
-                    console.log("Email sent: " + info.response);
-                }
-            });
-            console.log("Email sent")
-            res.status(200).json(user);
-        }
-        if (!user) res.status(404).json({ msg: "This email is not registered" })
-    }
-    catch {
-        res.status(500).json({ msg: "Error" })
-    }
-}
-
 module.exports = {
     getUsers,
     getUserId,
@@ -331,6 +319,5 @@ module.exports = {
     sendChangePassword,
     sendChangeEmail,
     sendNewAccountEmail,
-    sendSetPasswordEmail,
     updatePhoto
 }
