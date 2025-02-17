@@ -115,12 +115,12 @@ module.exports = (userId, clientName) => `
                     </div>
                 </div>
                 <br />
+                <p class="note">**Do not response to this email**</p>
+                <div class="footer">
+                    <a href="https://www.instagram.com/">Instagram</a>
+                    <a href="https://www.instagram.com/">Website</a>
+                </div>
             </div>
-        </div>
-        <p class="note">**Do not response to this email**</p>
-        <div class="footer">
-            <a href="https://www.instagram.com/">Instagram</a>
-            <a href="https://www.instagram.com/">Website</a>
         </div>
     </div>
 </body>
