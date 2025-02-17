@@ -1,5 +1,5 @@
 const express = require("express");
-const { getUsers, updateUser, login, addUser, deleteUser, getUserId, forgotPasswordEmail, sendChangePassword, sendChangeEmail, sendContactEmail, verifyToken, sendNewAccountEmail, updatePhoto, } = require("../controllers/userController");
+const { getUsers, updateUser, login, addUser, deleteUser, getUserId, forgotPasswordEmail, sendChangePassword, sendChangeEmail, sendContactEmail, verifyToken, sendNewAccountEmail, sendSetPasswordEmail, updatePhoto, } = require("../controllers/userController");
 const multer = require('multer');
 
 const userRouter = express.Router();
