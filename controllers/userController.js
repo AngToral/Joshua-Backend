@@ -121,6 +121,7 @@ const login = async (req, res) => {
         const userChecked = await userModel.findOne({ email: email }) //busco email en BD
         if (!userChecked) return res.status(404).json({ msg: "This email is not registered" })
         if (userChecked.removedAt) return res.status(404).json({ msg: "Email is no longer active" })
+        if (userChecked.status === "inactive") return res.status(404).json({ msg: "You have to change your password first" })
         const passwordChecked = await bcrypt.compare(req.body.password, userChecked.password) // si existe email, verificamos si la contraseña es correcta
         if (passwordChecked) { //generamos token de ingreso si la contraseña es correcta
             const token = jwt.sign({ //creo token con esta info
