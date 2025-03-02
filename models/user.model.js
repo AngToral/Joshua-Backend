@@ -28,7 +28,7 @@ const userSchema = new Schema({
     },
     plan: {
         type: String,
-        enum: ['Basic', 'Plus', 'Pro', 'Personal'],
+        enum: ['admin', 'Basic', 'Plus', 'Pro', 'Personal'],
         required: true,
     },
     status: {

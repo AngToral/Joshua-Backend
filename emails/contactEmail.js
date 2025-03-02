@@ -57,7 +57,7 @@ module.exports = (subjectType, clientName, clientEmail, subject) => `
         padding-top: 10px;
     }
 
-    a {
+    .enlaces {
         border-radius: 10px;
         padding: 10px;
         background-color: transparent;
@@ -135,8 +135,8 @@ module.exports = (subjectType, clientName, clientEmail, subject) => `
                 <p><strong>Type of info: </strong>${subjectType}</p>
                 <p><strong>Message: </strong>${subject}</p>
                 <div class="footer">
-                    <a href="https://www.instagram.com/">Instagram</a>
-                    <a href="https://www.instagram.com/">Website</a>
+                    <a class="enlaces" href="https://www.instagram.com/">Instagram</a>
+                    <a class="enlaces" href="https://www.instagram.com/">Website</a>
                 </div>
             </div>
         </div>

@@ -8,44 +8,64 @@ module.exports = (clientName, clientLastname, clientEmail, subjectType) => `
     <style>
     body {
         font-family: Arial, sans-serif;
-        margin: 0 autop;
-        padding: 20px;
+        background-color: #010a13;
+        color: #333;
+        margin: 0;
+        padding: 0;
         text-align: center;
-        width: 100%;
+        height: 100vh;
     }
 
     .container-grey {
-        width: 90%;
-        border: 1px solid #545b66;
+        max-width: 530px;
+        height: 710px;
+        margin: 20px auto;
         background-color: #545b66;
-        margin: 10px;
-        border-radius: 20px;
-        max-width: 470px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        position: relative;
     }
 
     .container-white {
-        border: 1px solid #545b66;
-        border-radius: 20px;
+        max-width: 530px;
+        height: 400px;
         background-color: #ffffff;
         padding: 20px;
-        max-width: 470px;
-    }
-
-    .footer {
-        color: #e6eae9;
-        border: 1px solid #545b66;
         border-radius: 10px;
-        background-color: #545b66;
-        justify-content: center;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        position: absolute;
+        bottom: 0px;
+        left: 0px;
+        right: 0px;
+        border: 1px solid #545b66;
         text-align: center;
     }
 
-    button {
+    .footer {
+        max-width: 530px;
+        background-color: #979ca2;
+        color: #ffffff !important;
+        position: absolute;
+        bottom: 0px;
+        left: 0px;
+        right: 0px;
+        border-radius: 10px;
+        margin-top: 20px;
+        text-align: center;
+        height: 40px;
+        align-items: center;
+        padding-top: 10px;
+    }
+
+    .enlaces {
         border-radius: 10px;
         padding: 10px;
         background-color: transparent;
         border: 2px solid transparent;
-        color: #e6eae9;
+        color: #ffffff !important;
+        cursor: pointer;
+        text-decoration: none;
+        text-align: center;
     }
 
     .image {
@@ -62,24 +82,45 @@ module.exports = (clientName, clientLastname, clientEmail, subjectType) => `
         margin: auto
     }
 
+    .content {
+        text-align: left;
+        padding: 10px;
+    }
+
+    .highlight-box {
+        background-color: #2cb9902e;
+        border: 3px solid #2cb990;
+        border-radius: 10px;
+        padding: 15px;
+        margin: 20px 0;
+    }
+
+    .highlight-text {
+        font-size: 16px;
+    }
+
+    .highlight-box strong {
+        display: block;
+        margin-bottom: 10px;
+    }
+
     .btn {
         margin-bottom: 15px;
-        padding: 10px 20px;
+        padding: 5px;
         font-size: 16px;
-        background-color: #979ca2;
+        color: #ffffff !important;
+        background-color: #545b66;
+        text-decoration: none;
         border-radius: 5px;
-        width: 150px;
+        width: 250px;
         text-align: center;
+        height: 25px;
     }
 
     .container-image {
         text-align: center;
         padding: 15px;
         align-items: center;
-    }
-
-    .btn-div {
-        margin: 20px;
     }
     </style>
 </head>
@@ -100,12 +141,12 @@ module.exports = (clientName, clientLastname, clientEmail, subjectType) => `
                 <p><strong>Plan: </strong>${subjectType}</p>
                 <div class="btn-div">
                     <div class="btn">
-                        <button href="http://localhost:5173/login">Create new account!</button>
+                        <a class="enlaces" href="http://localhost:5173/clients">Create new account!</a>
                     </div>
                 </div>
                 <div class="footer">
-                    <button href="https://www.instagram.com/">Instagram</button>
-                    <button href="https://www.instagram.com/">Website</button>
+                    <a class="enlaces" href="https://www.instagram.com/">Instagram</a>
+                    <a class="enlaces" href="https://www.instagram.com/">Website</a>
                 </div>
             </div>
         </div>

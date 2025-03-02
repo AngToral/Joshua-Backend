@@ -7,7 +7,6 @@ const transporter = require('../transporter');
 const forgotEmail = require("../emails/forgotEmail");
 const contactEmail = require("../emails/contactEmail");
 const changePassword = require("../emails/changePassword");
-const changeEmail = require("../emails/changeEmail");
 const newAccountEmail = require("../emails/newAccountEmail");
 const buyingEmail = require("../emails/buyingEmail");
 
@@ -277,36 +276,6 @@ const sendChangePassword = async (req, res) => {
     }
 }
 
-//Quiere cambiar el email dentro del login
-const sendChangeEmail = async (req, res) => {
-    const { email } = req.body
-    try {
-        const user = await userModel.findOne({ email: email })
-        const sendingEmail = changeEmail(user._id)
-        if (user) {
-            const newEmail = {
-                from: "joshuadestigtertraining@gmail.com",
-                to: email,
-                subject: "Change your Email 🔑",
-                html: sendingEmail,
-            };
-            transporter.sendMail(newEmail, function (error, info) {
-                if (error) {
-                    console.log(error);
-                } else {
-                    console.log("Email sent: " + info.response);
-                }
-            });
-            console.log("Email sent")
-            res.status(200).json(user);
-        }
-        if (!user) res.status(404).json({ msg: "This email is not registered" })
-    }
-    catch {
-        res.status(500).json({ msg: "Error" })
-    }
-}
-
 module.exports = {
     getUsers,
     getUserId,
@@ -318,7 +287,6 @@ module.exports = {
     forgotPasswordEmail,
     sendContactEmail,
     sendChangePassword,
-    sendChangeEmail,
     sendNewAccountEmail,
     updatePhoto
 }
