@@ -133,7 +133,7 @@ module.exports = (clientName, clientLastname, clientEmail, subjectType) => `
         <div class="container-white">
             <div class="content">
                 <h2>Someone wants to buy your services, Joshua! 🔥</h2>
-                <p>Create a new account and charge for your services.</p>
+                <p>Charge for your services, and then create a new account.</p>
                 <p>This is the client info:</p>
                 <p><strong>Name: </strong>${clientName}</p>
                 <p><strong>Lastname: </strong>${clientLastname}</p>
