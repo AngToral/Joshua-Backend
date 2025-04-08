@@ -199,7 +199,7 @@ const sendContactEmail = async (req, res) => {
 
         const newEmail = {
             from: "joshuadestigtertraining@gmail.com",
-            to: "avtoral94@gmail.com", //cambiar al de Joshua
+            to: "joshuadestigtertraining@gmail.com", //cambiar al de Joshua
             subject: "New client contact! 🎉 ",
             html: sendingEmail,
         };
@@ -226,7 +226,7 @@ const sendNewAccountEmail = async (req, res) => {
 
         const newEmail = {
             from: "joshuadestigtertraining@gmail.com",
-            to: "avtoral94@gmail.com", //cambiar al de Joshua
+            to: "joshuadestigtertraining@gmail.com", //cambiar al de Joshua
             subject: "New sale! 💪🏻",
             html: sendingEmail,
         };
