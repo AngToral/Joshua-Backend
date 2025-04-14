@@ -9,6 +9,7 @@ const contactEmail = require("../emails/contactEmail");
 const changePassword = require("../emails/changePassword");
 const newAccountEmail = require("../emails/newAccountEmail");
 const buyingEmail = require("../emails/buyingEmail");
+const schedule = require('node-schedule');
 
 cloudinary.config({
     cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
