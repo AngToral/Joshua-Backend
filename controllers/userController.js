@@ -276,6 +276,20 @@ const sendChangePassword = async (req, res) => {
     }
 }
 
+async function backendBot(req, res) {
+    try {
+        const response = await fetch('https://joshua-backend-aqx4.onrender.com/user')
+        const data = await response.json();
+        console.log('El bot está fucionando cada 24h');
+    } catch (error) {
+        console.log('Error: ', error);
+    }
+}
+
+schedule.scheduleJob('0 0 * * *', async () => { //esto mueve el bot cada 224h
+    await backendBot();
+});
+
 module.exports = {
     getUsers,
     getUserId,
