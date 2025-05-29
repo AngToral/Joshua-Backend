@@ -136,7 +136,7 @@ module.exports = (subjectType, clientName, clientEmail, subject) => `
                 <p><strong>Message: </strong>${subject}</p>
                 <div class="footer">
                     <a class="enlaces" href="https://www.instagram.com/">Instagram</a>
-                    <a class="enlaces" href="https://www.instagram.com/">Website</a>
+                    <a class="enlaces" href="https://www.joshuastraining.com/">Website</a>
                 </div>
             </div>
         </div>

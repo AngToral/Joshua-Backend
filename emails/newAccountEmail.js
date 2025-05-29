@@ -111,14 +111,14 @@ module.exports = (userId, clientName) => `
                 <br />
                 <div class="btn-div">
                     <div class="btn">
-                        <a href="http://localhost:5173/setnewpassword/${userId}">Set password!</a>
+                        <a href="https://www.joshuastraining.com/setnewpassword/${userId}">Set password!</a>
                     </div>
                 </div>
                 <br />
                 <p class="note">**Do not response to this email**</p>
                 <div class="footer">
                     <a href="https://www.instagram.com/">Instagram</a>
-                    <a href="https://www.instagram.com/">Website</a>
+                    <a href="https://www.joshuastraining.com/">Website</a>
                 </div>
             </div>
         </div>

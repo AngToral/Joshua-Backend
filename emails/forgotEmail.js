@@ -109,13 +109,13 @@ module.exports = (userId) => `
                 <p>Change it at the following link:</p>
                 <div class="btn-div">
                     <div class="btn">
-                        <a href="http://localhost:5173/setnewpassword/${userId}">New Password!</a>
+                        <a href="https://www.joshuastraining.com/${userId}">New Password!</a>
                     </div>
                 </div>
                 <p class="note">**Do not response to this email**</p>
                 <div class="footer">
                     <a href="https://www.instagram.com/">Instagram</a>
-                    <a href="https://www.instagram.com/">Website</a>
+                    <a href="https://www.joshuastraining.com/">Website</a>
                 </div>
             </div>
         </div>

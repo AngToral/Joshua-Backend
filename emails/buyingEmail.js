@@ -141,12 +141,12 @@ module.exports = (clientName, clientLastname, clientEmail, subjectType) => `
                 <p><strong>Plan: </strong>${subjectType}</p>
                 <div class="btn-div">
                     <div class="btn">
-                        <a class="enlaces" href="http://localhost:5173/clients">Create new account!</a>
+                        <a class="enlaces" href="https://www.joshuastraining.com/clients">Create new account!</a>
                     </div>
                 </div>
                 <div class="footer">
                     <a class="enlaces" href="https://www.instagram.com/">Instagram</a>
-                    <a class="enlaces" href="https://www.instagram.com/">Website</a>
+                    <a class="enlaces" href="https://www.joshuastraining.com/">Website</a>
                 </div>
             </div>
         </div>
